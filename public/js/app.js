@@ -6,6 +6,7 @@ function ready() {
 
 function onClick() {
   alert(addSome(5, 6));
+  alert(this.innerHTML);
 }
 
 function addSome(a, b) {
