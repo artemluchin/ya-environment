@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', ready);
 function ready() {
   document.querySelector('.button').addEventListener('click', onClick);
 }

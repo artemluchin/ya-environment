@@ -26,10 +26,18 @@
   "homepage": "https://github.com/artemluchin/ya-environment#readme",
   "devDependencies": {
     "eslint": "^3.2.2",
-    "mocha": "^3.0.1"
+    "mocha": "^3.0.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.4",
+    "merge-stream": "^1.0.0"
   },
   "dependencies": {
     "ejs": "^2.5.1",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "reset-css": "^2.0.20160720"
   }
 }
