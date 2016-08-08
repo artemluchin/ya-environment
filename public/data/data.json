@@ -1,10 +1,5 @@
 [
     {
-        "id": 1470640960363,
-        "name": "good",
-        "isDone": false
-    },
-    {
         "id": 1470644185871,
         "name": "create some cool app",
         "isDone": false
