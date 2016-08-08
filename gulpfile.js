@@ -36,8 +36,8 @@ gulp.task('public.js', function() {
 });
 
 gulp.task('public.assets', function() {
-    return gulp.src('src/assets/**/*')
-      .pipe(gulp.dest('public/assets'));
+  return gulp.src('src/assets/**/*')
+    .pipe(gulp.dest('public/assets'));
 });
 
 gulp.task('build', ['public.css', 'public.js', 'public.assets']);
