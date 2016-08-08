@@ -9,7 +9,7 @@ const rename = require('gulp-rename');
 const merge = require('merge-stream');
 
 
-gulp.task('dist.css', function () {
+gulp.task('public.css', function () {
   var sassStream, cssStream;
   
   sassStream = gulp.src('src/sass/*.scss')
@@ -29,16 +29,15 @@ gulp.task('dist.css', function () {
     .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('dist.js', function() {
+gulp.task('public.js', function() {
   return gulp.src(['src/js/app.js', 'src/js/*.js'])
     .pipe(concat('app.js'))
     .pipe(gulp.dest('public/js'));
 });
 
-// gulp.task('dist.assets', function() {
-//     return gulp.src('src/assets/**/*')
-//       .pipe(gulp.dest('dist/assets'));
-// })
+gulp.task('public.assets', function() {
+    return gulp.src('src/assets/**/*')
+      .pipe(gulp.dest('public/assets'));
+});
 
-// gulp.task('dist', ['dist.css', 'dist.js', 'dist.assets']);
-gulp.task('dist', ['dist.css', 'dist.js']);
+gulp.task('build', ['public.css', 'public.js', 'public.assets']);

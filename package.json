@@ -4,7 +4,7 @@
   "description": "Настройка инфраструктуры проекта",
   "main": "server.js",
   "scripts": {
-    "start": "gulp dist && npm test && node server.js",
+    "start": "gulp build && npm test && node server.js",
     "test": "eslint . && mocha"
   },
   "repository": {
