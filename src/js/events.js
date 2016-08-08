@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', ready);
 function ready() {
   $('.tasks__add-button').on('click', onClick);
   $('.tasks').on('click', '.task__delete-button', onDeleteClick);
@@ -31,12 +30,15 @@ function onClick() {
 }
 
 function onDeleteClick() {
-  var item = $(this).closest('.task');
-  var taskId = item.data('id');
-  item.remove();
+  var task = $(this).closest('.task');
+  var taskId = task.data('id');
+  task.remove();
   
   $.ajax({
     url: '/tasks/' + taskId,
     type: 'DELETE',
+    failure: function(err) {
+      console.error(err);
+    }
   });
 }
