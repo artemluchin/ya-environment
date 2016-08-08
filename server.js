@@ -70,6 +70,27 @@ app.delete('/tasks/:id', function(request, response) {
   });
 });
 
+app.put('/tasks/:id', function(request, response) {
+  var taskId = request.params.id;
+  console.log('PUT /tasks/' + taskId);
+  fs.readFile('public/data/data.json', function(err, data) {
+    if (err) throw err;
+    var tasks = JSON.parse(data);
+    
+    tasks.forEach(function(task, index) {
+      if (Number(task.id) === Number(taskId)) {
+        tasks[index].isDone = !task.isDone;
+      }
+    });
+    
+    fs.writeFile('public/data/data.json', JSON.stringify(tasks, null, 4), (err) => {
+      if (err) throw err;
+      console.log('Task has been updated.');
+      response.send(tasks);
+    });
+  });
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });

@@ -12,7 +12,9 @@
     <ul class="tasks__list">
       <% for (var i = 0; i < tasks.length; i++) {%>
         <li class="task" data-id="<%= tasks[i].id %>">
-          <input class="task__checkbox" type="checkbox" />
+          <input class="task__checkbox" type="checkbox" <% if (tasks[i].isDone) { %>
+            <%= 'checked' %>
+          <% } %>/>
           <span class="task__text"><%= tasks[i].name %></span>
           <button class="task__delete-button">Delete</button>
         </li>
