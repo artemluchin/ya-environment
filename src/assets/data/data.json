@@ -1,17 +1,17 @@
 [
     {
         "id": 1470644185871,
-        "name": "create some cool app",
+        "name": "Влить pull request, который придет на почту",
         "isDone": false
     },
     {
         "id": 1470644204336,
-        "name": "change some styles",
-        "isDone": false
+        "name": "Сдать ДЗ в срок",
+        "isDone": true
     },
     {
         "id": 1470644556892,
-        "name": "buy some milk today",
-        "isDone": false
+        "name": "Купить молока",
+        "isDone": true
     }
 ]

@@ -1,0 +1,41 @@
+.task {
+  background-color: #fff;
+  color: #444343;
+  margin: 5px auto 5px;
+  width: 98%;
+  display: flex;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 100px;
+  font-size: 30px;
+  transition: background .3s;
+}
+
+.task_done {
+  .task__text {
+    color: #ccc;
+  }
+  background-color: gray;
+}
+
+.task__text {
+  font-size: 30px;
+  flex-basis: 80%;
+  line-height: 30px;
+}
+
+.task__checkbox {
+  cursor: pointer;
+  margin-left: 4%;
+  flex-basis: 8%;
+  outline: none;
+  user-select: none;
+}
+
+.task__delete-button {
+  color: #ccc;
+  float: right;
+  margin-right: 20px;
+  cursor: pointer;
+}

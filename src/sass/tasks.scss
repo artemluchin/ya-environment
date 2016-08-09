@@ -1,0 +1,50 @@
+.tasks {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tasks__header {
+  display: flex;
+  background: #4b844b;
+  padding: 35px 0px;
+  font-size: 30px;
+  margin: 0 auto;
+  width: 98%;
+  max-width: 600px;
+}
+
+.tasks__title {
+  margin: 0 auto;
+  color: white;
+  background: #82336a;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.tasks__input {
+  border: none;
+  background: #4b844b;
+  margin-left: 20px;
+  color: white;
+  outline: none;
+  font-size: 30px;
+}
+
+.tasks__input::placeholder {
+  color: white;
+}
+
+.tasks__add-button {
+  margin-left: 3%;
+  color: white;
+  cursor: pointer;
+}
+
+.tasks__list {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}

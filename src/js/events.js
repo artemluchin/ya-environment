@@ -9,11 +9,18 @@ function onClick() {
   var list = $('.tasks__list');
   var taskText = input.val();
   var taskId = Date.now();
-  var taskItem = document.createElement('li');
+  var taskItem = document.createElement('div');
+  
+  if (taskText === '') {
+    return;
+  }
   
   taskItem.classList.add('task');
   taskItem.dataset.id = taskId;
-  taskItem.innerHTML = `<input class="task__checkbox" type="checkbox"/><span class="task__text">${taskText}</span><button class="task__delete-button">Delete</button>`;
+  taskItem.innerHTML = `
+    <div class="task__checkbox"><i class="fa fa-square-o"></i></div>
+    <span class="task__text">${taskText}</span>
+    <div class="task__delete-button"><i class="fa fa-times"></i></div>`;
   
   list.append(taskItem);
   input.val('').focus();
@@ -46,8 +53,12 @@ function onDeleteClick() {
 
 function onCheckboxClick() {
   var task = $(this).closest('.task');
+  var checkbox = $(this).children('.task__checkbox i');
   var taskId = task.data('id');
   
+  task.toggleClass('task_done');
+  checkbox.toggleClass('fa-square-o');
+  checkbox.toggleClass('fa-check-square-o');
   $.ajax({
     url: '/tasks/' + taskId,
     type: 'PUT',

@@ -4,14 +4,12 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 
 var app = express();
-
 var DATA_PATH = 'public/assets/data/data.json';
-
-app.set('port', (process.env.PORT || 3000));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
+app.set('port', (process.env.PORT || 3000));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
