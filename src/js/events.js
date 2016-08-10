@@ -28,7 +28,7 @@ function onClick() {
   $.ajax({
     type: 'POST',
     url: '/tasks',
-    data: JSON.stringify({id: taskId, name: taskText}),
+    data: JSON.stringify({id: taskId, text: taskText}),
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     failure: function(err) {

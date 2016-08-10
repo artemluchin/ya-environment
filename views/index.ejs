@@ -16,7 +16,7 @@
       <% for (var i = 0; i < tasks.length; i++) {%>
         <div class="task <%= tasks[i].isDone ? 'task_done' : '' %>" data-id="<%= tasks[i].id %>">
           <div class="task__checkbox"><i class="fa <%= tasks[i].isDone ? 'fa-check-square-o' : 'fa-square-o' %>"></i></div>
-          <span class="task__text"><%= tasks[i].name %></span>
+          <span class="task__text"><%= tasks[i].text %></span>
           <div class="task__delete-button"><i class="fa fa-times"></i></div>
         </div>
       <% } %>

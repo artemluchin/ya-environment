@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var lib = require('./helpers.js');
 
 var app = express();
 var DATA_PATH = 'public/assets/data/data.json';
@@ -27,21 +28,16 @@ app.get('/', function(request, response) {
 
 app.post('/tasks', function(req, res) {
   console.log('POST /tasks');
-  var taskText = req.body.name;
+  var taskText = req.body.text;
   var taskId = req.body.id;
   fs.readFile(DATA_PATH, 'utf-8', function(err, data) {
     if (err) {
       throw err;
     }
     var tasks = JSON.parse(data);
-    var newTask = {
-      id: taskId,
-      name: taskText,
-      isDone: false
-    };
-    tasks.push(newTask);
+    var newTask = lib.createTask(taskId, taskText, tasks);
     
-    fs.writeFile(DATA_PATH, JSON.stringify(tasks, null, 4), (err) => {
+    fs.writeFile(DATA_PATH, JSON.stringify(tasks, null, 4), function(err) {
       if (err) throw err;
       console.log('Task has been created.');
       res.send(newTask);
@@ -50,19 +46,18 @@ app.post('/tasks', function(req, res) {
 });
 
 app.delete('/tasks/:id', function(request, response) {
-  var taskId = request.params.id;
   console.log('DELETE /tasks/'+ taskId);
+  var taskId = request.params.id;
+  
   fs.readFile(DATA_PATH, function(err, data) {
-    if (err) throw err;
+    if (err) {
+      throw err;
+    }
     var tasks = JSON.parse(data);
     
-    tasks.forEach(function(task, index) {
-      if (Number(task.id) === Number(taskId)) {
-        tasks.splice(index, 1);
-      }
-    });
+    lib.deleteTask(taskId, tasks);
     
-    fs.writeFile(DATA_PATH, JSON.stringify(tasks, null, 4), (err) => {
+    fs.writeFile(DATA_PATH, JSON.stringify(tasks, null, 4), function(err) {
       if (err) throw err;
       console.log('Task has been removed.');
       response.send(tasks);
@@ -71,19 +66,21 @@ app.delete('/tasks/:id', function(request, response) {
 });
 
 app.put('/tasks/:id', function(request, response) {
-  var taskId = request.params.id;
   console.log('PUT /tasks/' + taskId);
+  var taskId = request.params.id;
+  
   fs.readFile(DATA_PATH, function(err, data) {
     if (err) throw err;
     var tasks = JSON.parse(data);
     
-    tasks.forEach(function(task, index) {
-      if (Number(task.id) === Number(taskId)) {
-        tasks[index].isDone = !task.isDone;
-      }
-    });
+    // tasks.forEach(function(task, index) {
+    //   if (Number(task.id) === Number(taskId)) {
+    //     tasks[index].isDone = !task.isDone;
+    //   }
+    // });
+    lib.updateTask(taskId, tasks);
     
-    fs.writeFile(DATA_PATH, JSON.stringify(tasks, null, 4), (err) => {
+    fs.writeFile(DATA_PATH, JSON.stringify(tasks, null, 4), function(err) {
       if (err) throw err;
       console.log('Task has been updated.');
       response.send(tasks);
