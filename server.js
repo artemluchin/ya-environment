@@ -73,11 +73,6 @@ app.put('/tasks/:id', function(request, response) {
     if (err) throw err;
     var tasks = JSON.parse(data);
     
-    // tasks.forEach(function(task, index) {
-    //   if (Number(task.id) === Number(taskId)) {
-    //     tasks[index].isDone = !task.isDone;
-    //   }
-    // });
     lib.updateTask(taskId, tasks);
     
     fs.writeFile(DATA_PATH, JSON.stringify(tasks, null, 4), function(err) {
