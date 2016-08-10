@@ -22,7 +22,7 @@ function onClick() {
     <span class="task__text">${taskText}</span>
     <div class="task__delete-button"><i class="fa fa-times"></i></div>`;
   
-  list.append(taskItem);
+  $(taskItem).prependTo(list);
   input.val('').focus();
   
   $.ajax({

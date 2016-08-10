@@ -15,7 +15,7 @@ module.exports = {
       isDone: false
     };
     
-    tasks.push(newTask);
+    tasks.unshift(newTask);
     
     return newTask;
   },
