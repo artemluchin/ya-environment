@@ -46,8 +46,8 @@ app.post('/tasks', function(req, res) {
 });
 
 app.delete('/tasks/:id', function(request, response) {
-  console.log('DELETE /tasks/'+ taskId);
   var taskId = request.params.id;
+  console.log('DELETE /tasks/'+ taskId);
   
   fs.readFile(DATA_PATH, function(err, data) {
     if (err) {
@@ -66,9 +66,8 @@ app.delete('/tasks/:id', function(request, response) {
 });
 
 app.put('/tasks/:id', function(request, response) {
-  console.log('PUT /tasks/' + taskId);
   var taskId = request.params.id;
-  
+  console.log('PUT /tasks/' + taskId);
   fs.readFile(DATA_PATH, function(err, data) {
     if (err) throw err;
     var tasks = JSON.parse(data);
